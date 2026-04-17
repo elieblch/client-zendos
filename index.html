@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zendo's — Bar Grec Méditerranéen à Lyon</title>
+<meta name="description" content="Zendo's Mediterraneo, bar grec méditerranéen à Lyon 6e. Mezzés artisanaux, bowls, pitas. Cuisine de la cheffe crétoise Anastasia Lenakaki.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #FFFFFF;
+    --bg-2: #F5F9FC;
+    --santorin: #1B4D89;
+    --sky: #87CEEB;
+    --gold: #D4A843;
+    --ink: #2B2B2B;
+    --muted: #7a7a7a;
+    --line: #E8EEF3;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .serif { font-family: 'Playfair Display', serif; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 1.1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+    color: var(--santorin);
+  }
+  .nav-logo em { color: var(--gold); font-style: normal; }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .nav-links a { transition: color 0.2s; }
+  .nav-links a:hover { color: var(--santorin); }
+  .nav-cta {
+    padding: 0.65rem 1.4rem;
+    background: var(--santorin);
+    color: white;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold); transform: scale(1.04); }
+
+  /* Hero */
+  .hero {
+    padding: 7rem 2rem 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    min-height: 80vh;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.5rem 1.1rem;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--santorin);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .hero-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--santorin);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 .apos { color: var(--gold); }
+  .hero-sub {
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 450px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary {
+    background: var(--santorin);
+    color: white;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(27, 77, 137, 0.3); }
+  .btn-outline {
+    background: transparent;
+    color: var(--santorin);
+    border: 2px solid var(--santorin);
+  }
+  .btn-outline:hover { background: var(--santorin); color: white; }
+  .hero-img {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 16px;
+    overflow: hidden;
+    background: url('Salle.jpg') center/cover;
+    box-shadow: 0 30px 80px rgba(27, 77, 137, 0.2);
+  }
+  .hero-sticker {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--santorin);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .hero-sticker .star { color: var(--gold); }
+
+  /* Marquee */
+  .marquee {
+    background: var(--santorin);
+    color: white;
+    padding: 1.5rem 0;
+    overflow: hidden;
+    border-top: 1px solid var(--santorin);
+    border-bottom: 1px solid var(--santorin);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: scroll 35s linear infinite;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+  .marquee-track > span { display: inline-flex; align-items: center; gap: 3rem; }
+  .marquee-track .icon {
+    color: var(--gold);
+    font-size: 1.3rem;
+  }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Sections */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1300px; margin: 0 auto; }
+  .section-eyebrow {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--bg-2);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--santorin);
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--santorin);
+    margin-bottom: 1.5rem;
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  /* Concept */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .concept-img {
+    aspect-ratio: 4/5;
+    background: url('Equipe.png') center/cover;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .concept-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    color: #444;
+  }
+  .concept-text .lead {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--santorin);
+    line-height: 1.5;
+  }
+  .concept-values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+  .value {
+    text-align: left;
+    padding: 1.2rem;
+    background: var(--bg-2);
+    border-radius: 12px;
+  }
+  .value-icon {
+    font-size: 1.7rem;
+    margin-bottom: 0.6rem;
+  }
+  .value h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+    color: var(--santorin);
+  }
+  .value p { font-size: 0.85rem; color: var(--muted); margin: 0; }
+
+  /* Menu */
+  .menu { background: var(--bg-2); }
+  .menu-head { text-align: center; margin-bottom: 3rem; }
+  .menu-head p { color: var(--muted); max-width: 600px; margin: 1rem auto 0; font-size: 1.1rem; }
+  .menu-tabs {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .menu-tab {
+    padding: 0.7rem 1.5rem;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--ink);
+  }
+  .menu-tab.active, .menu-tab:hover {
+    background: var(--santorin);
+    color: white;
+    border-color: var(--santorin);
+  }
+  .menu-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .menu-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .menu-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(27, 77, 137, 0.1); }
+  .menu-card-img {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .mc1 { background-image: url('Plat1.jpg'); }
+  .mc2 { background-image: url('Plat2.jpg'); }
+  .mc3 { background-image: url('Salle.jpg'); }
+  .menu-card-body { padding: 1.8rem; }
+  .menu-card-tag {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    background: var(--gold);
+    color: white;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+  .menu-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+    color: var(--santorin);
+  }
+  .menu-card p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .menu-card ul {
+    list-style: none;
+    margin-top: 0.8rem;
+  }
+  .menu-card li {
+    font-size: 0.9rem;
+    padding: 0.3rem 0;
+    color: #555;
+    border-bottom: 1px dashed var(--line);
+  }
+  .menu-card li:last-child { border-bottom: none; }
+
+  /* Avis */
+  .avis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .avis-card {
+    padding: 2rem;
+    background: var(--bg-2);
+    border-radius: 16px;
+    border-top: 3px solid var(--gold);
+  }
+  .avis-stars {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.2em;
+  }
+  .avis-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  .avis-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+  }
+  .avis-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--santorin);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+  .avis-author .name { font-weight: 600; }
+  .avis-author .date { color: var(--muted); font-size: 0.82rem; }
+
+  /* Horaires */
+  .horaires { background: var(--bg-2); }
+  .horaires-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .hours-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+  }
+  .hours-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--santorin);
+    margin-bottom: 1.5rem;
+  }
+  .hours-list { list-style: none; }
+  .hours-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 1rem;
+  }
+  .hours-list li:last-child { border: none; }
+  .info-block {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .info-block h4 {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .info-block a:hover { color: var(--santorin); }
+  .map {
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .map iframe { width: 100%; height: 100%; border: 0; }
+
+  /* Footer */
+  footer {
+    background: var(--santorin);
+    color: white;
+    padding: 5rem 2rem 2rem;
+  }
+  .footer-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .footer-logo em { font-style: normal; color: var(--gold); }
+  .footer-desc {
+    opacity: 0.8;
+    max-width: 320px;
+    font-size: 0.95rem;
+  }
+  .footer-grid h5 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--gold);
+  }
+  .footer-grid a, .footer-grid p {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+    opacity: 0.85;
+  }
+  .footer-grid a:hover { color: var(--gold); opacity: 1; }
+  .copyright {
+    max-width: 1300px;
+    margin: 3rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.6;
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hero-grid, .concept-grid, .horaires-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .menu-cards, .avis-grid { grid-template-columns: 1fr; }
+    .concept-values { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Zendo<em>'s</em></a>
+    <ul class="nav-links">
+      <li><a href="#concept">Concept</a></li>
+      <li><a href="#menu">La carte</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#horaires">Venir</a></li>
+    </ul>
+    <a href="#horaires" class="nav-cta">Réserver une table</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow"><span class="dot"></span> Bar Grec Méditerranéen · Lyon 6e</div>
+      <h1>Zendo<span class="apos">'</span>s</h1>
+      <p class="hero-sub serif" style="font-style: italic;">Le goût de la Grèce, au cœur de Lyon.</p>
+      <p class="hero-desc">Mezzés artisanaux, bowls généreux, pitas salées et sucrées — la cuisine méditerranéenne de la cheffe crétoise Anastasia Lenakaki, dans un décor aux accents de Santorin.</p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">Voir la carte →</a>
+        <a href="#horaires" class="btn btn-outline">Venir nous voir</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <div class="hero-sticker"><span class="star">★</span> 4,6 sur Google</div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Mezzés <span class="icon">🫒</span> Bowls <span class="icon">🌿</span> Pitas <span class="icon">☀</span> Mezzés <span class="icon">🫒</span> Bowls <span class="icon">🌿</span> Pitas <span class="icon">☀</span></span>
+    <span>Mezzés <span class="icon">🫒</span> Bowls <span class="icon">🌿</span> Pitas <span class="icon">☀</span> Mezzés <span class="icon">🫒</span> Bowls <span class="icon">🌿</span> Pitas <span class="icon">☀</span></span>
+  </div>
+</div>
+
+<section id="concept">
+  <div class="container">
+    <div class="concept-grid">
+      <div>
+        <span class="section-eyebrow">Notre histoire</span>
+        <h2>La Crète à Lyon,<br>avec <em>Anastasia</em>.</h2>
+        <p class="lead">« La cuisine grecque, c'est ma grand-mère, c'est ma mère, c'est moi. On partage ce qu'on aime. »</p>
+        <p>Derrière les fourneaux de Zendo's, Anastasia Lenakaki — cheffe crétoise — cuisine chaque jour des mezzés faits maison à partir de produits rapportés de Grèce et de saison.</p>
+        <p>Dans un décor inspiré de Santorin — murs blancs, bleu égéen, colonnes de bois, vases antiques, lierre — on se retrouve comme en vacances. Sauf qu'on est au 33 rue Molière.</p>
+        <div class="concept-values">
+          <div class="value">
+            <div class="value-icon">🫒</div>
+            <h4>Produits de Grèce</h4>
+            <p>Huile, olives Kalamata, feta AOP.</p>
+          </div>
+          <div class="value">
+            <div class="value-icon">👩‍🍳</div>
+            <h4>Fait maison</h4>
+            <p>Mezzés, pitas, sauces.</p>
+          </div>
+          <div class="value">
+            <div class="value-icon">🏛</div>
+            <h4>Ambiance Santorin</h4>
+            <p>Bleu égéen, lumière blanche.</p>
+          </div>
+        </div>
+      </div>
+      <div class="concept-img"></div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="menu">
+  <div class="container">
+    <div class="menu-head">
+      <span class="section-eyebrow">La carte</span>
+      <h2>Des <em>mezzés</em> aux pitas sucrées.</h2>
+      <p>Une carte qui respire la Méditerranée. Tout est fait maison, avec des produits de saison et des ingrédients rapportés de Grèce.</p>
+    </div>
+    <div class="menu-tabs">
+      <button class="menu-tab active">Mezzés</button>
+      <button class="menu-tab">Bowls</button>
+      <button class="menu-tab">Pitas sucrées</button>
+      <button class="menu-tab">Desserts</button>
+    </div>
+    <div class="menu-cards">
+      <div class="menu-card">
+        <div class="menu-card-img mc1"></div>
+        <div class="menu-card-body">
+          <span class="menu-card-tag">Mezzés</span>
+          <h3>Les classiques</h3>
+          <p>Nos mezzés à partager ou en entrée. À accompagner d'une pita fraîche.</p>
+          <ul>
+            <li>Tzatziki maison</li>
+            <li>Tarama maison</li>
+            <li>Feuilles de vigne</li>
+            <li>Purée d'aubergines grillées</li>
+            <li>Houmous crémeux</li>
+            <li>Halloumi frit, miel & sésame</li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img mc2"></div>
+        <div class="menu-card-body">
+          <span class="menu-card-tag">Bowls</span>
+          <h3>Zeus Bowl & cie</h3>
+          <p>Généreux, colorés, équilibrés. Nos bowls signature à déguster sur place ou à emporter.</p>
+          <ul>
+            <li>Zeus Bowl — keftedes, olives Kalamata, tomates cerises, concombre, pita origan</li>
+            <li>Bowl cabillaud crispy</li>
+            <li>Option veggie disponible</li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img mc3"></div>
+        <div class="menu-card-body">
+          <span class="menu-card-tag">Sucré</span>
+          <h3>Pitas sucrées & yaourt</h3>
+          <p>Notre touche gourmande signature. À tomber.</p>
+          <ul>
+            <li>Sfakiani — feta, miel, cannelle</li>
+            <li>Chocoba — pita chocolat banane</li>
+            <li>Meliba — pita miel & fruits</li>
+            <li>Yaourt grec, miel & crumble speculoos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avis">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 2rem;">
+      <span class="section-eyebrow">Ils en parlent</span>
+      <h2>Nos clients ont le <em>sourire</em>.</h2>
+      <p style="color: var(--muted); font-size: 1.05rem;">4,6 ★ sur Google — et ça se sent.</p>
+    </div>
+    <div class="avis-grid">
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Ambiance Santorin dès qu'on passe la porte. Le décor est bluffant, et la cuisine à la hauteur. Un vrai voyage. »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">SL</div>
+          <div>
+            <div class="name">Sophie L.</div>
+            <div class="date">Il y a 2 semaines</div>
+          </div>
+        </div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Mezzés excellents, pita soyeuse, tarama à tomber. On s'est régalés, le service est chaleureux. Coup de cœur. »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">MK</div>
+          <div>
+            <div class="name">Marc K.</div>
+            <div class="date">Il y a 1 mois</div>
+          </div>
+        </div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p class="avis-text">« Moussaka incroyable, pita sucrée à la feta-miel à se damner. On y retourne dès que possible. »</p>
+        <div class="avis-author">
+          <div class="avis-avatar">CD</div>
+          <div>
+            <div class="name">Claire D.</div>
+            <div class="date">Il y a 3 semaines</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="horaires" class="horaires">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 3rem;">
+      <span class="section-eyebrow">Nous trouver</span>
+      <h2>33 Rue Molière,<br><em>Lyon 6e</em>.</h2>
+    </div>
+    <div class="horaires-grid">
+      <div class="hours-card">
+        <h3>Horaires d'ouverture</h3>
+        <ul class="hours-list">
+          <li><span>Lundi</span><span style="color:var(--muted); font-style: italic;">Fermé</span></li>
+          <li><span>Mardi</span><span>12h — 14h30 · 19h — 22h30</span></li>
+          <li><span>Mercredi</span><span>12h — 14h30 · 19h — 22h30</span></li>
+          <li><span>Jeudi</span><span>12h — 14h30 · 19h — 22h30</span></li>
+          <li><span>Vendredi</span><span>12h — 14h30 · 19h — 23h</span></li>
+          <li><span>Samedi</span><span>19h — 23h</span></li>
+          <li><span>Dimanche</span><span style="color:var(--muted); font-style: italic;">Fermé</span></li>
+        </ul>
+        <div class="info-block">
+          <h4>Adresse</h4>
+          <p>33 Rue Molière, 69006 Lyon</p>
+        </div>
+        <div class="info-block">
+          <h4>Contact</h4>
+          <p><a href="https://instagram.com/zendos_lyon" target="_blank" rel="noopener">@zendos_lyon</a></p>
+        </div>
+        <div class="info-block">
+          <h4>Paiements acceptés</h4>
+          <p style="font-size: 0.88rem; color: var(--muted);">CB · Espèces · Sans contact · Mastercard · AMEX · PayPal · Ticket Restaurant</p>
+        </div>
+      </div>
+      <div class="map">
+        <iframe src="https://maps.google.com/maps?q=33%20Rue%20Moli%C3%A8re%2069006%20Lyon&t=&z=16&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Zendo<em>'s</em></div>
+      <p class="footer-desc">Bar Grec Méditerranéen. Mezzés, bowls, pitas — la Grèce de la cheffe Anastasia, au cœur de Lyon 6e.</p>
+    </div>
+    <div>
+      <h5>Adresse</h5>
+      <p>33 Rue Molière<br>69006 Lyon</p>
+    </div>
+    <div>
+      <h5>Suivez-nous</h5>
+      <a href="https://instagram.com/zendos_lyon" target="_blank" rel="noopener">Instagram</a>
+      <a href="#menu">La carte</a>
+      <a href="#horaires">Horaires</a>
+    </div>
+    <div>
+      <h5>Ouvert</h5>
+      <p>Mar — Ven : midi & soir<br>Sam : soir uniquement<br>Fermé dim. & lun.</p>
+    </div>
+  </div>
+  <div class="copyright">
+    <span>© 2026 Zendo's Mediterraneo — Tous droits réservés.</span>
+    <span>Site réalisé par Elie.</span>
+  </div>
+</footer>
+
+</body>
+</html>
